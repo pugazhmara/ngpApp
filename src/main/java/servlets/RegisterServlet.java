@@ -1,6 +1,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,6 +28,27 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String uname=request.getParameter("username");
+		String pass=request.getParameter("password");
+		String email=request.getParameter("email");
+		String phone=request.getParameter("phone");
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/drngpdb","root","");
+			Statement st=con.createStatement();
+			int n=st.executeUpdate("insert into userdb values('"+uname+"','"+pass+"','"+email+"','"+phone+"')");
+			if(n>0) {
+				System.out.println("Inserted");
+				response.sendRedirect("pages/welcome.jsp");
+			}else {
+				System.out.println("not inserted");
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

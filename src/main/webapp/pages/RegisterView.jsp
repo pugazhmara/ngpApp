@@ -47,6 +47,17 @@
         button:hover {
             background: #e76d52;
         }
+        .nav-links {
+            margin-top: 10px;
+        }
+        .nav-links a {
+            color: #ff7e5f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
     </style>
     <script>
         function validateForm() {
@@ -73,6 +84,10 @@
             <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
             <button type="submit">Register</button>
         </form>
+        <div class="nav-links">
+            <a href="LoginView.jsp">Login</a>
+        </div>
     </div>
 </body>
 </html>
+    

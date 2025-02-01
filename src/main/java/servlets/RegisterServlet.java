@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
 			int n=st.executeUpdate("insert into userdb values('"+uname+"','"+pass+"','"+email+"','"+phone+"')");
 			if(n>0) {
 				System.out.println("Inserted");
-				response.sendRedirect("pages/welcome.jsp");
+				response.sendRedirect("pages/LoginView.jsp");
 			}else {
 				System.out.println("not inserted");
 			}
